@@ -1,0 +1,488 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# "Filtering step 1: SNV filters for PD34493, PD41276, PD41305"
+# Author: Margarete Fabre
+
+# run separately for each of the 3 individuals (PD34493, PD41276, PD41305)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# 1. Run script for filtering caveman output from low-input pipeline
+	
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Run using nohup &
+#-pt: Comma-separated list of project identifiers containing the samples of interest
+#-st: Comma-separated list of sample identifiers whose presence is required in the matched project directories listed under –pt
+#-pn: Comma-separated list of project identifiers containing the matched control samples
+#-sn: Comma-separated list of sample identifiers of control samples whose presence is required in the matched project directories listed under -pn
+#-o: Output directory
+
+# See other options /lustre/scratch116/casm/cgp/users/ms44/scripts/runLCMFiltering_by_sample_project_v3_farm5.sh --help (assume data aligned to hg19)
+# If coverage low (~15) might be best to lower the variant fragment threshold to 3 through the parameter -f (default:4).
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#PD34493:
+nohup /lustre/scratch116/casm/cgp/users/ms44/scripts/runLCMFiltering_by_sample_project_v3_farm5.sh -f 3 -pt 2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305 -st PD34493k_01,PD34493k_02,PD34493k_03,PD34493k_04,PD34493k_05,PD34493k_06,PD34493k_07,PD34493k_08,PD34493k_09,PD34493k_10,PD34493k_11,PD34493k_12,PD34493k_13,PD34493k_14,PD34493k_15,PD34493k_16,PD34493k_17,PD34493k_18,PD34493k_19,PD34493k_20,PD34493k_21,PD34493k_22,PD34493k_23,PD34493k_24,PD34493k_25,PD34493k_26,PD34493k_27,PD34493k_28,PD34493k_29,PD34493k_30,PD34493k_31,PD34493k_32,PD34493k_33,PD34493k_34,PD34493k_35,PD34493k_36,PD34493k_37,PD34493k_38,PD34493k_39,PD34493k_40,PD34493k_41,PD34493k_42,PD34493k_43,PD34493k_44,PD34493k_45,PD34493k_46,PD34493k_47,PD34493k_48,PD34493k_49,PD34493k_50,PD34493k_51,PD34493k_52,PD34493k_53,PD34493k_54,PD34493k_55,PD34493k_56,PD34493k_57,PD34493k_58,PD34493k_59,PD34493k_60,PD34493k_61,PD34493k_62,PD34493k_63,PD34493k_64,PD34493k_65,PD34493k_66,PD34493k_67,PD34493k_68,PD34493k_70,PD34493k_71,PD34493k_72,PD34493k_73,PD34493k_74,PD34493k_75,PD34493k_76,PD34493k_77,PD34493k_78,PD34493k_79,PD34493k_80,PD34493k_81,PD34493k_82,PD34493k_83,PD34493k_84,PD34493k_85,PD34493k_86,PD34493k_87,PD34493k_88,PD34493k_89,PD34493k_90,PD34493k_91,PD34493k_92,PD34493k_93,PD34493k_94,PD34493k_95,PD34493k_96 -pn 1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548 -sn PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is -o /lustre/scratch119/casm/team163gv/mf13/COLONIES/PD34493/PD34493_1/subs/ &> mylog.log &
+
+#PD41276:
+nohup /lustre/scratch116/casm/cgp/users/ms44/scripts/runLCMFiltering_by_sample_project_v3_farm5.sh -f 3 -pt 2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305 -st PD41276k_01,PD41276k_02,PD41276k_03,PD41276k_04,PD41276k_05,PD41276k_06,PD41276k_07,PD41276k_08,PD41276k_09,PD41276k_10,PD41276k_11,PD41276k_12,PD41276k_13,PD41276k_14,PD41276k_15,PD41276k_16,PD41276k_17,PD41276k_18,PD41276k_19,PD41276k_20,PD41276k_21,PD41276k_22,PD41276k_23,PD41276k_24,PD41276k_25,PD41276k_26,PD41276k_27,PD41276k_28,PD41276k_29,PD41276k_30,PD41276k_31,PD41276k_32,PD41276k_33,PD41276k_34,PD41276k_35,PD41276k_36,PD41276k_37,PD41276k_38,PD41276k_39,PD41276k_40,PD41276k_41,PD41276k_42,PD41276k_43,PD41276k_44,PD41276k_45,PD41276k_46,PD41276k_47,PD41276k_48,PD41276k_49,PD41276k_50,PD41276k_51,PD41276k_52,PD41276k_53,PD41276k_54,PD41276k_55,PD41276k_56,PD41276k_57,PD41276k_58,PD41276k_59,PD41276k_60,PD41276k_61,PD41276k_62,PD41276k_63,PD41276k_64,PD41276k_65,PD41276k_66,PD41276k_67,PD41276k_68,PD41276k_69,PD41276k_70,PD41276k_71,PD41276k_72,PD41276k_73,PD41276k_74,PD41276k_75,PD41276k_76,PD41276k_77,PD41276k_78,PD41276k_79,PD41276k_80,PD41276k_81,PD41276k_82,PD41276k_83,PD41276k_84,PD41276k_85,PD41276k_86,PD41276k_87,PD41276k_88,PD41276k_89,PD41276k_90,PD41276k_91,PD41276k_92,PD41276k_93,PD41276k_94,PD41276k_95,PD41276k_96 -pn 1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548 -sn PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is -o /lustre/scratch119/casm/team163gv/mf13/COLONIES/PD41276/PD41276_1/subs/ &> mylog.log &
+
+#PD41305:
+nohup /lustre/scratch116/casm/cgp/users/ms44/scripts/runLCMFiltering_by_sample_project_v3_farm5.sh -f 3 -pt 2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305,2305 -st PD41305k_100,PD41305k_101,PD41305k_102,PD41305k_103,PD41305k_104,PD41305k_105,PD41305k_106,PD41305k_107,PD41305k_108,PD41305k_109,PD41305k_110,PD41305k_111,PD41305k_112,PD41305k_113,PD41305k_114,PD41305k_115,PD41305k_116,PD41305k_117,PD41305k_118,PD41305k_119,PD41305k_120,PD41305k_121,PD41305k_122,PD41305k_123,PD41305k_124,PD41305k_125,PD41305k_126,PD41305k_127,PD41305k_128,PD41305k_129,PD41305k_130,PD41305k_131,PD41305k_132,PD41305k_133,PD41305k_134,PD41305k_135,PD41305k_136,PD41305k_137,PD41305k_138,PD41305k_139,PD41305k_140,PD41305k_141,PD41305k_142,PD41305k_143,PD41305k_144,PD41305k_145,PD41305k_146,PD41305k_147,PD41305k_148,PD41305k_149,PD41305k_150,PD41305k_151,PD41305k_152,PD41305k_153,PD41305k_154,PD41305k_155,PD41305k_156,PD41305k_157,PD41305k_158,PD41305k_159,PD41305k_160,PD41305k_161,PD41305k_162,PD41305k_163,PD41305k_164,PD41305k_165,PD41305k_166,PD41305k_167,PD41305k_168,PD41305k_169,PD41305k_170,PD41305k_171,PD41305k_172,PD41305k_173,PD41305k_174,PD41305k_175,PD41305k_176,PD41305k_177,PD41305k_178,PD41305k_179,PD41305k_180,PD41305k_181,PD41305k_182,PD41305k_183,PD41305k_184,PD41305k_185,PD41305k_186,PD41305k_187,PD41305k_188,PD41305k_189,PD41305k_190,PD41305k_191,PD41305k_192,PD41305k_97,PD41305k_98,PD41305k_99 -pn 1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548,1548 -sn PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is,PDv37is -o /lustre/scratch119/casm/team163gv/mf13/COLONIES/PD41305/PD41305_1/subs &> mylog.log &
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# 2. Check number of lines in the complete_final_retained_3.vcf files 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD34493/PD34493_1/subs/
+wc -l *complete_final_retained_3.vcf 
+
+    39320 PD34493k_01_complete_final_retained_3.vcf
+    33051 PD34493k_02_complete_final_retained_3.vcf
+    42121 PD34493k_03_complete_final_retained_3.vcf
+    36237 PD34493k_04_complete_final_retained_3.vcf
+    38871 PD34493k_05_complete_final_retained_3.vcf
+    43499 PD34493k_06_complete_final_retained_3.vcf
+    44213 PD34493k_07_complete_final_retained_3.vcf
+    37484 PD34493k_08_complete_final_retained_3.vcf
+    39012 PD34493k_09_complete_final_retained_3.vcf
+    39725 PD34493k_10_complete_final_retained_3.vcf
+    39853 PD34493k_11_complete_final_retained_3.vcf
+    43705 PD34493k_12_complete_final_retained_3.vcf
+    35776 PD34493k_13_complete_final_retained_3.vcf
+    43518 PD34493k_14_complete_final_retained_3.vcf
+    45612 PD34493k_15_complete_final_retained_3.vcf
+    38356 PD34493k_16_complete_final_retained_3.vcf
+    42614 PD34493k_17_complete_final_retained_3.vcf
+    40298 PD34493k_18_complete_final_retained_3.vcf
+    44359 PD34493k_19_complete_final_retained_3.vcf
+    40380 PD34493k_20_complete_final_retained_3.vcf
+    41871 PD34493k_21_complete_final_retained_3.vcf
+    43084 PD34493k_22_complete_final_retained_3.vcf
+    44384 PD34493k_23_complete_final_retained_3.vcf
+    33142 PD34493k_24_complete_final_retained_3.vcf
+    43419 PD34493k_25_complete_final_retained_3.vcf
+    43281 PD34493k_26_complete_final_retained_3.vcf
+    38563 PD34493k_27_complete_final_retained_3.vcf
+    44817 PD34493k_28_complete_final_retained_3.vcf
+    38758 PD34493k_29_complete_final_retained_3.vcf
+    44801 PD34493k_30_complete_final_retained_3.vcf
+    42135 PD34493k_31_complete_final_retained_3.vcf
+    33967 PD34493k_32_complete_final_retained_3.vcf
+    40436 PD34493k_33_complete_final_retained_3.vcf
+    42240 PD34493k_34_complete_final_retained_3.vcf
+    44980 PD34493k_35_complete_final_retained_3.vcf
+    41003 PD34493k_36_complete_final_retained_3.vcf
+    45224 PD34493k_37_complete_final_retained_3.vcf
+    46578 PD34493k_38_complete_final_retained_3.vcf
+    44006 PD34493k_39_complete_final_retained_3.vcf
+    38240 PD34493k_40_complete_final_retained_3.vcf
+    43882 PD34493k_41_complete_final_retained_3.vcf
+    47016 PD34493k_42_complete_final_retained_3.vcf
+    45954 PD34493k_43_complete_final_retained_3.vcf
+    43607 PD34493k_44_complete_final_retained_3.vcf
+    44345 PD34493k_45_complete_final_retained_3.vcf
+    46200 PD34493k_46_complete_final_retained_3.vcf
+    39579 PD34493k_47_complete_final_retained_3.vcf
+    39574 PD34493k_48_complete_final_retained_3.vcf
+    45273 PD34493k_49_complete_final_retained_3.vcf
+    43014 PD34493k_50_complete_final_retained_3.vcf
+    46278 PD34493k_51_complete_final_retained_3.vcf
+    46421 PD34493k_52_complete_final_retained_3.vcf
+    46415 PD34493k_53_complete_final_retained_3.vcf
+    46727 PD34493k_54_complete_final_retained_3.vcf
+    45828 PD34493k_55_complete_final_retained_3.vcf
+    41669 PD34493k_56_complete_final_retained_3.vcf
+    46131 PD34493k_57_complete_final_retained_3.vcf
+    42869 PD34493k_58_complete_final_retained_3.vcf
+    43570 PD34493k_59_complete_final_retained_3.vcf
+    42379 PD34493k_60_complete_final_retained_3.vcf
+    43469 PD34493k_61_complete_final_retained_3.vcf
+    42432 PD34493k_62_complete_final_retained_3.vcf
+    43578 PD34493k_63_complete_final_retained_3.vcf
+    26773 PD34493k_64_complete_final_retained_3.vcf
+    44976 PD34493k_65_complete_final_retained_3.vcf
+    42769 PD34493k_66_complete_final_retained_3.vcf
+    40733 PD34493k_67_complete_final_retained_3.vcf
+    43336 PD34493k_68_complete_final_retained_3.vcf
+    39848 PD34493k_70_complete_final_retained_3.vcf
+    45450 PD34493k_71_complete_final_retained_3.vcf
+    39956 PD34493k_72_complete_final_retained_3.vcf
+    43113 PD34493k_73_complete_final_retained_3.vcf
+    46070 PD34493k_74_complete_final_retained_3.vcf
+    45324 PD34493k_75_complete_final_retained_3.vcf
+    44219 PD34493k_76_complete_final_retained_3.vcf
+    42190 PD34493k_77_complete_final_retained_3.vcf
+    40847 PD34493k_78_complete_final_retained_3.vcf
+    43750 PD34493k_79_complete_final_retained_3.vcf
+    42252 PD34493k_80_complete_final_retained_3.vcf
+    40395 PD34493k_81_complete_final_retained_3.vcf
+    41615 PD34493k_82_complete_final_retained_3.vcf
+    43712 PD34493k_83_complete_final_retained_3.vcf
+    39730 PD34493k_84_complete_final_retained_3.vcf
+    44454 PD34493k_85_complete_final_retained_3.vcf
+    44545 PD34493k_86_complete_final_retained_3.vcf
+    42971 PD34493k_87_complete_final_retained_3.vcf
+    46864 PD34493k_88_complete_final_retained_3.vcf
+    43857 PD34493k_89_complete_final_retained_3.vcf
+    41262 PD34493k_90_complete_final_retained_3.vcf
+    44237 PD34493k_91_complete_final_retained_3.vcf
+    44249 PD34493k_92_complete_final_retained_3.vcf
+    46251 PD34493k_93_complete_final_retained_3.vcf
+    42944 PD34493k_94_complete_final_retained_3.vcf
+    42534 PD34493k_95_complete_final_retained_3.vcf
+    42249 PD34493k_96_complete_final_retained_3.vcf
+  4022618 total
+ 
+  
+  /lustre/scratch119/casm/team163gv/mf13/COLONIES/PD41276k/PD41276k_1/subs/
+wc -l *complete_final_retained_3.vcf 
+
+  	43660 PD41276k_01_complete_final_retained_3.vcf
+    39556 PD41276k_02_complete_final_retained_3.vcf
+    40298 PD41276k_03_complete_final_retained_3.vcf
+    40850 PD41276k_04_complete_final_retained_3.vcf
+    44127 PD41276k_05_complete_final_retained_3.vcf
+    42605 PD41276k_06_complete_final_retained_3.vcf
+    43250 PD41276k_07_complete_final_retained_3.vcf
+    43434 PD41276k_08_complete_final_retained_3.vcf
+    43824 PD41276k_09_complete_final_retained_3.vcf
+    39985 PD41276k_10_complete_final_retained_3.vcf
+    39957 PD41276k_11_complete_final_retained_3.vcf
+    43833 PD41276k_12_complete_final_retained_3.vcf
+    42724 PD41276k_13_complete_final_retained_3.vcf
+    43571 PD41276k_14_complete_final_retained_3.vcf
+    45096 PD41276k_15_complete_final_retained_3.vcf
+    43825 PD41276k_16_complete_final_retained_3.vcf
+    45397 PD41276k_17_complete_final_retained_3.vcf
+    43689 PD41276k_18_complete_final_retained_3.vcf
+    41627 PD41276k_19_complete_final_retained_3.vcf
+    44238 PD41276k_20_complete_final_retained_3.vcf
+    44957 PD41276k_21_complete_final_retained_3.vcf
+    43859 PD41276k_22_complete_final_retained_3.vcf
+    43529 PD41276k_23_complete_final_retained_3.vcf
+    42840 PD41276k_24_complete_final_retained_3.vcf
+    41981 PD41276k_25_complete_final_retained_3.vcf
+    43508 PD41276k_26_complete_final_retained_3.vcf
+    42439 PD41276k_27_complete_final_retained_3.vcf
+    44503 PD41276k_28_complete_final_retained_3.vcf
+    42244 PD41276k_29_complete_final_retained_3.vcf
+    44353 PD41276k_30_complete_final_retained_3.vcf
+    43850 PD41276k_31_complete_final_retained_3.vcf
+    44474 PD41276k_32_complete_final_retained_3.vcf
+    45311 PD41276k_33_complete_final_retained_3.vcf
+    41115 PD41276k_34_complete_final_retained_3.vcf
+    42053 PD41276k_35_complete_final_retained_3.vcf
+    43525 PD41276k_36_complete_final_retained_3.vcf
+    44238 PD41276k_37_complete_final_retained_3.vcf
+    44977 PD41276k_38_complete_final_retained_3.vcf
+    42529 PD41276k_39_complete_final_retained_3.vcf
+    44032 PD41276k_40_complete_final_retained_3.vcf
+    43385 PD41276k_41_complete_final_retained_3.vcf
+    44484 PD41276k_42_complete_final_retained_3.vcf
+    42228 PD41276k_43_complete_final_retained_3.vcf
+    42846 PD41276k_44_complete_final_retained_3.vcf
+    42726 PD41276k_45_complete_final_retained_3.vcf
+    43601 PD41276k_46_complete_final_retained_3.vcf
+    42729 PD41276k_47_complete_final_retained_3.vcf
+    43329 PD41276k_48_complete_final_retained_3.vcf
+    44486 PD41276k_49_complete_final_retained_3.vcf
+    41590 PD41276k_50_complete_final_retained_3.vcf
+    43573 PD41276k_51_complete_final_retained_3.vcf
+    44603 PD41276k_52_complete_final_retained_3.vcf
+    44016 PD41276k_53_complete_final_retained_3.vcf
+    44520 PD41276k_54_complete_final_retained_3.vcf
+    40623 PD41276k_55_complete_final_retained_3.vcf
+    45533 PD41276k_56_complete_final_retained_3.vcf
+    43733 PD41276k_57_complete_final_retained_3.vcf
+    40201 PD41276k_58_complete_final_retained_3.vcf
+    41649 PD41276k_59_complete_final_retained_3.vcf
+    40141 PD41276k_60_complete_final_retained_3.vcf
+    42706 PD41276k_61_complete_final_retained_3.vcf
+    40716 PD41276k_62_complete_final_retained_3.vcf
+    42355 PD41276k_63_complete_final_retained_3.vcf
+    42411 PD41276k_64_complete_final_retained_3.vcf
+    44169 PD41276k_65_complete_final_retained_3.vcf
+    39112 PD41276k_66_complete_final_retained_3.vcf
+    41152 PD41276k_67_complete_final_retained_3.vcf
+    43065 PD41276k_68_complete_final_retained_3.vcf
+    44924 PD41276k_69_complete_final_retained_3.vcf
+    42815 PD41276k_70_complete_final_retained_3.vcf
+    43969 PD41276k_71_complete_final_retained_3.vcf
+    42938 PD41276k_72_complete_final_retained_3.vcf
+    42229 PD41276k_73_complete_final_retained_3.vcf
+    44553 PD41276k_74_complete_final_retained_3.vcf
+    44114 PD41276k_75_complete_final_retained_3.vcf
+    43297 PD41276k_76_complete_final_retained_3.vcf
+    43548 PD41276k_77_complete_final_retained_3.vcf
+    40548 PD41276k_78_complete_final_retained_3.vcf
+    41052 PD41276k_79_complete_final_retained_3.vcf
+    41605 PD41276k_80_complete_final_retained_3.vcf
+    44520 PD41276k_81_complete_final_retained_3.vcf
+    43760 PD41276k_82_complete_final_retained_3.vcf
+    45038 PD41276k_83_complete_final_retained_3.vcf
+    42876 PD41276k_84_complete_final_retained_3.vcf
+    44763 PD41276k_85_complete_final_retained_3.vcf
+    43827 PD41276k_86_complete_final_retained_3.vcf
+    42914 PD41276k_87_complete_final_retained_3.vcf
+    45618 PD41276k_88_complete_final_retained_3.vcf
+    44795 PD41276k_89_complete_final_retained_3.vcf
+    42184 PD41276k_90_complete_final_retained_3.vcf
+    43012 PD41276k_91_complete_final_retained_3.vcf
+    43396 PD41276k_92_complete_final_retained_3.vcf
+    44516 PD41276k_93_complete_final_retained_3.vcf
+    44321 PD41276k_94_complete_final_retained_3.vcf
+    43181 PD41276k_95_complete_final_retained_3.vcf
+    42239 PD41276k_96_complete_final_retained_3.vcf
+  4138097 total
+  
+  
+    /lustre/scratch119/casm/team163gv/mf13/COLONIES/PD41305/PD41305_1/subs/
+wc -l *complete_final_retained_3.vcf 
+  
+  46970 PD41305k_100_complete_final_retained_3.vcf
+    46829 PD41305k_101_complete_final_retained_3.vcf
+    45982 PD41305k_102_complete_final_retained_3.vcf
+    45477 PD41305k_103_complete_final_retained_3.vcf
+    46341 PD41305k_104_complete_final_retained_3.vcf
+    40267 PD41305k_105_complete_final_retained_3.vcf
+    44908 PD41305k_106_complete_final_retained_3.vcf
+    47851 PD41305k_107_complete_final_retained_3.vcf
+    47487 PD41305k_108_complete_final_retained_3.vcf
+    45656 PD41305k_109_complete_final_retained_3.vcf
+    46559 PD41305k_110_complete_final_retained_3.vcf
+    47799 PD41305k_111_complete_final_retained_3.vcf
+    44092 PD41305k_112_complete_final_retained_3.vcf
+    43956 PD41305k_113_complete_final_retained_3.vcf
+    25786 PD41305k_114_complete_final_retained_3.vcf
+    47616 PD41305k_115_complete_final_retained_3.vcf
+    48609 PD41305k_116_complete_final_retained_3.vcf
+    48446 PD41305k_117_complete_final_retained_3.vcf
+    49177 PD41305k_118_complete_final_retained_3.vcf
+    46403 PD41305k_119_complete_final_retained_3.vcf
+    48746 PD41305k_120_complete_final_retained_3.vcf
+    44080 PD41305k_121_complete_final_retained_3.vcf
+    45916 PD41305k_122_complete_final_retained_3.vcf
+    47721 PD41305k_123_complete_final_retained_3.vcf
+    48833 PD41305k_124_complete_final_retained_3.vcf
+    43424 PD41305k_125_complete_final_retained_3.vcf
+    48955 PD41305k_126_complete_final_retained_3.vcf
+    45411 PD41305k_127_complete_final_retained_3.vcf
+    50037 PD41305k_128_complete_final_retained_3.vcf
+    47050 PD41305k_129_complete_final_retained_3.vcf
+    42299 PD41305k_130_complete_final_retained_3.vcf
+    47696 PD41305k_131_complete_final_retained_3.vcf
+    45172 PD41305k_132_complete_final_retained_3.vcf
+    48488 PD41305k_133_complete_final_retained_3.vcf
+    48625 PD41305k_134_complete_final_retained_3.vcf
+    47510 PD41305k_135_complete_final_retained_3.vcf
+    45635 PD41305k_136_complete_final_retained_3.vcf
+     4077 PD41305k_137_complete_final_retained_3.vcf
+    48280 PD41305k_138_complete_final_retained_3.vcf
+    48302 PD41305k_139_complete_final_retained_3.vcf
+    41501 PD41305k_140_complete_final_retained_3.vcf
+    42804 PD41305k_141_complete_final_retained_3.vcf
+    47040 PD41305k_142_complete_final_retained_3.vcf
+    46790 PD41305k_143_complete_final_retained_3.vcf
+    44511 PD41305k_144_complete_final_retained_3.vcf
+    45489 PD41305k_145_complete_final_retained_3.vcf
+    41767 PD41305k_146_complete_final_retained_3.vcf
+    44330 PD41305k_147_complete_final_retained_3.vcf
+    48070 PD41305k_148_complete_final_retained_3.vcf
+    46242 PD41305k_149_complete_final_retained_3.vcf
+    46419 PD41305k_150_complete_final_retained_3.vcf
+    40776 PD41305k_151_complete_final_retained_3.vcf
+    47764 PD41305k_152_complete_final_retained_3.vcf
+    45083 PD41305k_153_complete_final_retained_3.vcf
+    47957 PD41305k_154_complete_final_retained_3.vcf
+    43992 PD41305k_155_complete_final_retained_3.vcf
+    44406 PD41305k_156_complete_final_retained_3.vcf
+    45999 PD41305k_157_complete_final_retained_3.vcf
+    48058 PD41305k_158_complete_final_retained_3.vcf
+    44677 PD41305k_159_complete_final_retained_3.vcf
+    41021 PD41305k_160_complete_final_retained_3.vcf
+    45808 PD41305k_161_complete_final_retained_3.vcf
+    45938 PD41305k_162_complete_final_retained_3.vcf
+    43261 PD41305k_163_complete_final_retained_3.vcf
+    44898 PD41305k_164_complete_final_retained_3.vcf
+    49189 PD41305k_165_complete_final_retained_3.vcf
+    49108 PD41305k_166_complete_final_retained_3.vcf
+    44738 PD41305k_167_complete_final_retained_3.vcf
+    47294 PD41305k_168_complete_final_retained_3.vcf
+    42413 PD41305k_169_complete_final_retained_3.vcf
+    45789 PD41305k_170_complete_final_retained_3.vcf
+    45795 PD41305k_171_complete_final_retained_3.vcf
+    44473 PD41305k_172_complete_final_retained_3.vcf
+    47488 PD41305k_173_complete_final_retained_3.vcf
+    38698 PD41305k_174_complete_final_retained_3.vcf
+    43839 PD41305k_175_complete_final_retained_3.vcf
+    41481 PD41305k_176_complete_final_retained_3.vcf
+    47275 PD41305k_177_complete_final_retained_3.vcf
+    47291 PD41305k_178_complete_final_retained_3.vcf
+    49040 PD41305k_179_complete_final_retained_3.vcf
+    44563 PD41305k_180_complete_final_retained_3.vcf
+    48033 PD41305k_181_complete_final_retained_3.vcf
+    46728 PD41305k_182_complete_final_retained_3.vcf
+    48674 PD41305k_183_complete_final_retained_3.vcf
+    42638 PD41305k_184_complete_final_retained_3.vcf
+    45482 PD41305k_185_complete_final_retained_3.vcf
+    47677 PD41305k_186_complete_final_retained_3.vcf
+    46520 PD41305k_187_complete_final_retained_3.vcf
+    47809 PD41305k_188_complete_final_retained_3.vcf
+    49671 PD41305k_189_complete_final_retained_3.vcf
+    43341 PD41305k_190_complete_final_retained_3.vcf
+    43491 PD41305k_191_complete_final_retained_3.vcf
+    44836 PD41305k_192_complete_final_retained_3.vcf
+    47438 PD41305k_97_complete_final_retained_3.vcf
+    36935 PD41305k_98_complete_final_retained_3.vcf
+    43530 PD41305k_99_complete_final_retained_3.vcf
+  4338346 total
+  
+  
+  
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# 3. Make one bed file per individual of all the subs, copy to new directory, create output file 
+
+/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD34493/PD34493_1/subs/
+/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD41276/PD41276_1/subs/
+/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD41305/PD41305_1/subs/
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+cut -f 1,2,4,5 *complete_final_retained_3.vcf | sort | uniq > PD34493_1_filtered_subs.bed
+grep -v "#" PD34493_1_filtered_subs.bed > PD34493_1_filtered_subs_no#.bed # remove lines starting with "#"
+mv PD34493_1_filtered_subs_no#.bed PD34493_1_filtered_subs.bed
+# 126602 PD34493_1_filtered_subs.bed
+mkdir output
+
+cut -f 1,2,4,5 *complete_final_retained_3.vcf | sort | uniq > PD41276_1_filtered_subs.bed
+grep -v "#" PD41276_1_filtered_subs.bed > PD41276_1_filtered_subs_no#.bed # remove lines starting with "#"
+mv PD41276_1_filtered_subs_no#.bed PD41276_1_filtered_subs.bed
+# 87708 PD41276_1_filtered_subs.bed
+mkdir output
+
+cut -f 1,2,4,5 *complete_final_retained_3.vcf | sort | uniq > PD41305_1_filtered_subs.bed
+grep -v "#" PD41305_1_filtered_subs.bed > PD41305_1_filtered_subs_no#.bed # remove lines starting with "#"
+mv PD41305_1_filtered_subs_no#.bed PD41305_1_filtered_subs.bed
+#150147 PD41305_1_filtered_subs.bed
+mkdir output
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# 4. Run cgpVAF script to create cgpVAF commands that are split per chromosome 
+        
+        Creates: cgpVafChr.cmd (commands split per chr) cgpVafConcat.cmd (commands to concatenate split output) run_bsub.sh (script to set off commands in first two files)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+module load cgpVAFcommand
+
+#from within:
+#/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD34493/PD34493_1/subs/
+#/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD41276/PD41276_1/subs/
+#/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD41305/PD41305_1/subs/
+
+#do:
+
+createVafCmd.pl -pid 2305 -u PD34493k_01 PD34493k_02 PD34493k_03 PD34493k_04 PD34493k_05 PD34493k_06 PD34493k_07 PD34493k_08 PD34493k_09 PD34493k_10 PD34493k_11 PD34493k_12 PD34493k_13 PD34493k_14 PD34493k_15 PD34493k_16 PD34493k_17 PD34493k_18 PD34493k_19 PD34493k_20 PD34493k_21 PD34493k_22 PD34493k_23 PD34493k_24 PD34493k_25 PD34493k_26 PD34493k_27 PD34493k_28 PD34493k_29 PD34493k_30 PD34493k_31 PD34493k_32 PD34493k_33 PD34493k_34 PD34493k_35 PD34493k_36 PD34493k_37 PD34493k_38 PD34493k_39 PD34493k_40 PD34493k_41 PD34493k_42 PD34493k_43 PD34493k_44 PD34493k_45 PD34493k_46 PD34493k_47 PD34493k_48 PD34493k_49 PD34493k_50 PD34493k_51 PD34493k_52 PD34493k_53 PD34493k_54 PD34493k_55 PD34493k_56 PD34493k_57 PD34493k_58 PD34493k_59 PD34493k_60 PD34493k_61 PD34493k_62 PD34493k_63 PD34493k_64 PD34493k_65 PD34493k_66 PD34493k_67 PD34493k_68 PD34493k_70 PD34493k_71 PD34493k_72 PD34493k_73 PD34493k_74 PD34493k_75 PD34493k_76 PD34493k_77 PD34493k_78 PD34493k_79 PD34493k_80 PD34493k_81 PD34493k_82 PD34493k_83 PD34493k_84 PD34493k_85 PD34493k_86 PD34493k_87 PD34493k_88 PD34493k_89 PD34493k_90 PD34493k_91 PD34493k_92 PD34493k_93 PD34493k_94 PD34493k_95 PD34493k_96 -o output -g /lustre/scratch119/casm/team78pipelines/reference/human/GRCh37d5/genome.fa -hdr /lustre/scratch119/casm/team78pipelines/reference/human/GRCh37d5/shared/ucscHiDepth_0.01_mrg1000_no_exon_coreChrs.bed.gz -mq 30  -bo 1  -b PD34493k_1_filtered_subs.bed
+createVafCmd.pl -pid 2305 -u PD41276k_01 PD41276k_02 PD41276k_03 PD41276k_04 PD41276k_05 PD41276k_06 PD41276k_07 PD41276k_08 PD41276k_09 PD41276k_10 PD41276k_11 PD41276k_12 PD41276k_13 PD41276k_14 PD41276k_15 PD41276k_16 PD41276k_17 PD41276k_18 PD41276k_19 PD41276k_20 PD41276k_21 PD41276k_22 PD41276k_23 PD41276k_24 PD41276k_25 PD41276k_26 PD41276k_27 PD41276k_28 PD41276k_29 PD41276k_30 PD41276k_31 PD41276k_32 PD41276k_33 PD41276k_34 PD41276k_35 PD41276k_36 PD41276k_37 PD41276k_38 PD41276k_39 PD41276k_40 PD41276k_41 PD41276k_42 PD41276k_43 PD41276k_44 PD41276k_45 PD41276k_46 PD41276k_47 PD41276k_48 PD41276k_49 PD41276k_50 PD41276k_51 PD41276k_52 PD41276k_53 PD41276k_54 PD41276k_55 PD41276k_56 PD41276k_57 PD41276k_58 PD41276k_59 PD41276k_60 PD41276k_61 PD41276k_62 PD41276k_63 PD41276k_64 PD41276k_65 PD41276k_66 PD41276k_67 PD41276k_68 PD41276k_69 PD41276k_70 PD41276k_71 PD41276k_72 PD41276k_73 PD41276k_74 PD41276k_75 PD41276k_76 PD41276k_77 PD41276k_78 PD41276k_79 PD41276k_80 PD41276k_81 PD41276k_82 PD41276k_83 PD41276k_84 PD41276k_85 PD41276k_86 PD41276k_87 PD41276k_88 PD41276k_89 PD41276k_90 PD41276k_91 PD41276k_92 PD41276k_93 PD41276k_94 PD41276k_95 PD41276k_96 -o output -g /lustre/scratch119/casm/team78pipelines/reference/human/GRCh37d5/genome.fa -hdr /lustre/scratch119/casm/team78pipelines/reference/human/GRCh37d5/shared/ucscHiDepth_0.01_mrg1000_no_exon_coreChrs.bed.gz -mq 30  -bo 1  -b PD41276k_1_filtered_subs.bed
+createVafCmd.pl -pid 2305 -u PD41305k_100 PD41305k_101 PD41305k_102 PD41305k_103 PD41305k_104 PD41305k_105 PD41305k_106 PD41305k_107 PD41305k_108 PD41305k_109 PD41305k_110 PD41305k_111 PD41305k_112 PD41305k_113 PD41305k_114 PD41305k_115 PD41305k_116 PD41305k_117 PD41305k_118 PD41305k_119 PD41305k_120 PD41305k_121 PD41305k_122 PD41305k_123 PD41305k_124 PD41305k_125 PD41305k_126 PD41305k_127 PD41305k_128 PD41305k_129 PD41305k_130 PD41305k_131 PD41305k_132 PD41305k_133 PD41305k_134 PD41305k_135 PD41305k_136 PD41305k_137 PD41305k_138 PD41305k_139 PD41305k_140 PD41305k_141 PD41305k_142 PD41305k_143 PD41305k_144 PD41305k_145 PD41305k_146 PD41305k_147 PD41305k_148 PD41305k_149 PD41305k_150 PD41305k_151 PD41305k_152 PD41305k_153 PD41305k_154 PD41305k_155 PD41305k_156 PD41305k_157 PD41305k_158 PD41305k_159 PD41305k_160 PD41305k_161 PD41305k_162 PD41305k_163 PD41305k_164 PD41305k_165 PD41305k_166 PD41305k_167 PD41305k_168 PD41305k_169 PD41305k_170 PD41305k_171 PD41305k_172 PD41305k_173 PD41305k_174 PD41305k_175 PD41305k_176 PD41305k_177 PD41305k_178 PD41305k_179 PD41305k_180 PD41305k_181 PD41305k_182 PD41305k_183 PD41305k_184 PD41305k_185 PD41305k_186 PD41305k_187 PD41305k_188 PD41305k_189 PD41305k_190 PD41305k_191 PD41305k_192 PD41305k_97 PD41305k_98 PD41305k_99 -o output -g /lustre/scratch119/casm/team78pipelines/reference/human/GRCh37d5/genome.fa -hdr /lustre/scratch119/casm/team78pipelines/reference/human/GRCh37d5/shared/ucscHiDepth_0.01_mrg1000_no_exon_coreChrs.bed.gz -mq 30  -bo 1  -b PD41305k_1_filtered_subs.bed
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# 5. Modify config.ini file (in output directory) to have approx 10 bams per job (splits by bams as well as by chr) 
+	/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD34493/PD34493_1/subs/output
+	/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD41276/PD41276_1/subs/output
+	/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD41305/PD41305_1/subs/output
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# 6. Save .ini file as	PD34493_cgpVafConfig.ini 
+						PD41276_cgpVafConfig.ini
+						PD41305_cgpVafConfig.ini
+
+
+# and run following command to create amended split commands  
+# from within:
+#		/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD34493/PD34493_1/subs/
+#		/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD41276/PD41276_1/subs/
+#		/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD41305/PD41305_1/subs/
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+createVafCmd.pl -pid 2305 -o output -i output/PD34493_cgpVafConfig.ini -g /lustre/scratch119/casm/team78pipelines/reference/human/GRCh37d5/genome.fa -hdr /lustre/scratch119/casm/team78pipelines/reference/human/GRCh37d5/shared/ucscHiDepth_0.01_mrg1000_no_exon_coreChrs.bed.gz -mq 30  -bo 1  -b PD34493_1_filtered_subs.bed
+createVafCmd.pl -pid 2305 -o output -i output/PD41276_cgpVafConfig.ini -g /lustre/scratch119/casm/team78pipelines/reference/human/GRCh37d5/genome.fa -hdr /lustre/scratch119/casm/team78pipelines/reference/human/GRCh37d5/shared/ucscHiDepth_0.01_mrg1000_no_exon_coreChrs.bed.gz -mq 30  -bo 1  -b PD41276_1_filtered_subs.bed
+createVafCmd.pl -pid 2305 -o output -i output/PD41305_cgpVafConfig.ini -g /lustre/scratch119/casm/team78pipelines/reference/human/GRCh37d5/genome.fa -hdr /lustre/scratch119/casm/team78pipelines/reference/human/GRCh37d5/shared/ucscHiDepth_0.01_mrg1000_no_exon_coreChrs.bed.gz -mq 30  -bo 1  -b PD41305_1_filtered_subs.bed
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# 7. Edit run_bsub.sh command to increase memory and use long queue  
+            run_bsub.sh command sets off jobs in cgpVafChr.cmd file that has been created
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+set -e;
+set -o pipefail;
+                                               
+jobid=`bsub -oo cgpvaf%I.log -q long -J 'batchjobs[1-744]%25' -n 1 -R 'select[mem>=4000] span[hosts=1] rusage[mem=4000]' -M4000 '/software/$tware/CGP/projects/cgpVAFcommand/perl/bin/farm_idx_exec.pl cgpVafChr.cmd $LSB_JOBINDEX' |  perl -ane '($id)=$_=~/Job\s+<(\d+)>.*/; print$id'`
+                                               
+bsub -w "done($jobid)||exit($jobid)" -oo concat%I.log -q normal -J 'batchjobs[1-41]%41' -n 1 -R 'select[mem>=2000] span[hosts=1] rusage[mem=2000]' -M2000 '/software/CGP/projects/cgpVAFcommand/perl/bin/farm_idx_exec.pl cgpVafConcat.cmd $LSB_JOBINDEX'
+
+                                
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# 8. Run run_bsub.sh command   
+#		/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD34493/PD34493_1/subs/
+#		/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD41276/PD41276_1/subs/
+#		/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD41305/PD41305_1/subs/
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+bash run_bsub.sh
+
+---------------------------------------------------------------------------------------------------------
+
+# 9. Check output 	/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD34493/PD34493_1/subs/output/output/PDv37is/snp
+					/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD41276/PD41276_1/subs/output/output/PDv37is/snp
+					/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD41305/PD41305_1/subs/output/output/PDv37is/snp
+---------------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# 10.  Remove extra lines in headers of vaf.tsv files with more than 10 bam files
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Ensure headers are the same length
+wc -l *_vaf.tsv
+
+ls *_vaf.tsv > files
+
+for i in {1..10}
+do grep -v "##" $(sed -n $i'p' files) > tsv$i
+done
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# 11. Cut columns of interest to new files: Chrom Pos Ref Alt then MTR DEP for all samples
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Create list of files of interest in list saved as 'files'
+ls tsv* > tsv_files
+
+#for first file
+cut -f 3,4,5,6,39,41,54,56,69,71,84,86,99,101,114,116,129,131,144,146,159,161,174,176,189,191,204,206 $(sed -n '1p' tsv_files) > output1   #Chr, Pos, Ref, Alt, + MTR, DEP for all samples (max 12 samples in one file)
+
+#for subsequent files (exclude Chr, Pos, Ref, Alt and PDv37is)
+for i in {2..10}
+do
+cut -f 39,41,54,56,69,71,84,86,99,101,114,116,129,131,144,146,159,161,174,176,189,191,204,206 $(sed -n $i'p' tsv_files) >  output$i
+done
+
+
+#Concatenate output files to one merged file
+paste output* > PD34493_1_filtered_merged_cut.tsv
+paste output* > PD41276_1_filtered_merged_cut.tsv
+paste output* > PD41305_1_filtered_merged_cut.tsv
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Next steps are in Analysis_Step2 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+

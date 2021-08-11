@@ -1,0 +1,169 @@
+MPBoot version 1.1.0 for Linux 64-bit built Mar 23 2018
+Copyright (c) 2016 Diep Thi Hoang, Le Sy Vinh, Tomas Flouri, Alexandros Stamatakis, Arndt von Haeseler and Bui Quang Minh.
+
+Host:    farm5-head2 (AVX512F, FMA3, 98 GB RAM)
+Command: mpboot -s FINAL/mpboot_files/Filter_PD41276_v2_FINAL_rho05_noMixed.fa -bb 1000
+Seed:    286241 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Wed Dec  2 17:13:05 2020
+Kernel:  AVX
+
+Reading alignment file FINAL/mpboot_files/Filter_PD41276_v2_FINAL_rho05_noMixed.fa ... Fasta format detected
+Alignment most likely contains protein sequences
+Alignment has 85 sequences with 4100 columns and 1951 patterns
+ID   Sequence     #Gap/Ambiguity
+1    Ancestral    0    (0.000%)	1
+2    PD41276k_05  65   (1.585%)	2
+3    PD41276k_06  64   (1.561%)	2
+4    PD41276k_07  59   (1.439%)	2
+5    PD41276k_08  48   (1.171%)	2
+6    PD41276k_09  61   (1.488%)	2
+7    PD41276k_10  86   (2.098%)	2
+8    PD41276k_12  43   (1.049%)	2
+9    PD41276k_84  41   (1.000%)	2
+10   PD41276k_85  37   (0.902%)	2
+11   PD41276k_86  37   (0.902%)	2
+12   PD41276k_87  65   (1.585%)	2
+13   PD41276k_88  31   (0.756%)	2
+14   PD41276k_90  55   (1.341%)	2
+15   PD41276k_91  52   (1.268%)	2
+16   PD41276k_93  54   (1.317%)	2
+17   PD41276k_94  37   (0.902%)	2
+18   PD41276k_95  61   (1.488%)	2
+19   PD41276k_96  68   (1.659%)	2
+20   PD41276k_01  53   (1.293%)	2
+21   PD41276k_02  113  (2.756%)	2
+22   PD41276k_03  114  (2.780%)	2
+23   PD41276k_13  66   (1.610%)	2
+24   PD41276k_14  60   (1.463%)	2
+25   PD41276k_17  57   (1.390%)	2
+26   PD41276k_18  51   (1.244%)	2
+27   PD41276k_19  65   (1.585%)	2
+28   PD41276k_20  48   (1.171%)	2
+29   PD41276k_22  42   (1.024%)	2
+30   PD41276k_23  46   (1.122%)	2
+31   PD41276k_24  65   (1.585%)	2
+32   PD41276k_25  61   (1.488%)	2
+33   PD41276k_27  61   (1.488%)	2
+34   PD41276k_28  44   (1.073%)	2
+35   PD41276k_29  51   (1.244%)	2
+36   PD41276k_30  37   (0.902%)	2
+37   PD41276k_31  42   (1.024%)	2
+38   PD41276k_32  38   (0.927%)	2
+39   PD41276k_33  40   (0.976%)	2
+40   PD41276k_34  76   (1.854%)	2
+41   PD41276k_35  76   (1.854%)	2
+42   PD41276k_36  54   (1.317%)	2
+43   PD41276k_37  36   (0.878%)	2
+44   PD41276k_38  52   (1.268%)	2
+45   PD41276k_39  44   (1.073%)	2
+46   PD41276k_40  46   (1.122%)	2
+47   PD41276k_41  45   (1.098%)	2
+48   PD41276k_42  45   (1.098%)	2
+49   PD41276k_43  59   (1.439%)	2
+50   PD41276k_45  59   (1.439%)	2
+51   PD41276k_46  59   (1.439%)	2
+52   PD41276k_47  71   (1.732%)	2
+53   PD41276k_48  56   (1.366%)	2
+54   PD41276k_49  52   (1.268%)	2
+55   PD41276k_50  47   (1.146%)	2
+56   PD41276k_51  54   (1.317%)	2
+57   PD41276k_52  45   (1.098%)	2
+58   PD41276k_53  39   (0.951%)	2
+59   PD41276k_54  36   (0.878%)	2
+60   PD41276k_55  85   (2.073%)	2
+61   PD41276k_56  44   (1.073%)	2
+62   PD41276k_57  46   (1.122%)	2
+63   PD41276k_58  85   (2.073%)	2
+64   PD41276k_59  76   (1.854%)	2
+65   PD41276k_60  110  (2.683%)	2
+66   PD41276k_61  52   (1.268%)	2
+67   PD41276k_62  75   (1.829%)	2
+68   PD41276k_63  77   (1.878%)	2
+69   PD41276k_64  59   (1.439%)	2
+70   PD41276k_65  42   (1.024%)	2
+71   PD41276k_66  122  (2.976%)	2
+72   PD41276k_67  70   (1.707%)	2
+73   PD41276k_69  30   (0.732%)	2
+74   PD41276k_70  66   (1.610%)	2
+75   PD41276k_71  42   (1.024%)	2
+76   PD41276k_72  55   (1.341%)	2
+77   PD41276k_74  38   (0.927%)	2
+78   PD41276k_75  35   (0.854%)	2
+79   PD41276k_76  44   (1.073%)	2
+80   PD41276k_77  61   (1.488%)	2
+81   PD41276k_78  81   (1.976%)	2
+82   PD41276k_79  82   (2.000%)	2
+83   PD41276k_80  83   (2.024%)	2
+84   PD41276k_83  34   (0.829%)	2
+85   PD41276k_73  61   (1.488%)	2
+**** TOTAL        4824 (1.384%)
+Time for parsimony tree construction: 0.232 seconds
+Parsimony score: 4604
+Reordering patterns in alignment by decreasing order of pattern parsimony... 0.003 seconds
+
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.075 seconds
+Generating 1000 samples for bootstrap approximation...
+
+NOTE: 91.841 MB RAM is required!
+Current best tree score: 4604
+
+Generating 99 parsimony trees... (97 duplicated parsimony trees)
+CPU time: 7
+Finish initializing candidate tree set. Number of distinct locally optimal trees: 3
+Current best score: 4604 / CPU time: 7
+
+Time: 0h:0m:7s
+NOTE: REPS computation is segmented into 2 parts for speed...
+segment#1 ends at 1456
+segment#2 ends at 1951
+0 seconds.
+RATCHET Iteration 10 / Score: 4604 / Time: 0h:0m:23s
+RATCHET Iteration 20 / Score: 4604 / Time: 0h:0m:31s (0h:2m:15s left)
+RATCHET Iteration 30 / Score: 4604 / Time: 0h:0m:40s (0h:1m:38s left)
+RATCHET Iteration 40 / Score: 4604 / Time: 0h:0m:48s (0h:1m:15s left)
+RATCHET Iteration 50 / Score: 4604 / Time: 0h:0m:56s (0h:0m:58s left)
+RATCHET Iteration 60 / Score: 4604 / Time: 0h:1m:4s (0h:0m:44s left)
+RATCHET Iteration 70 / Score: 4604 / Time: 0h:1m:12s (0h:0m:32s left)
+RATCHET Iteration 80 / Score: 4604 / Time: 0h:1m:20s (0h:0m:21s left)
+RATCHET Iteration 90 / Score: 4604 / Time: 0h:1m:29s (0h:0m:10s left)
+RATCHET Iteration 100 / Score: 4604 / Time: 0h:1m:36s (0h:0m:0s left)
+Optimizing bootstrap trees ...
+100 replicates done
+200 replicates done
+300 replicates done
+400 replicates done
+500 replicates done
+600 replicates done
+700 replicates done
+800 replicates done
+900 replicates done
+1000 replicates done
+CPU Time used:  73 sec.
+NOTE: At the end, 45397 bootstrap candidate trees evaluated.
+Scores of best 5 trees: 
+4604 4604 4604 
+BEST SCORE FOUND : 4604
+Creating bootstrap support values...
+Split supports printed to NEXUS file FINAL/mpboot_files/Filter_PD41276_v2_FINAL_rho05_noMixed.fa.splits.nex
+
+CPU time used for tree search: 169.533 sec (0h:2m:49s)
+Wall-clock time used for tree search: 170.706 sec (0h:2m:50s)
+Total CPU time used: 169.712 sec (0h:2m:49s)
+Total wall-clock time used: 170.906 sec (0h:2m:50s)
+
+Computing bootstrap consensus tree...
+Reading input file FINAL/mpboot_files/Filter_PD41276_v2_FINAL_rho05_noMixed.fa.splits.nex...
+85 taxa and 189 splits.
+Consensus tree written to FINAL/mpboot_files/Filter_PD41276_v2_FINAL_rho05_noMixed.fa.contree
+Parsimony score of consensus tree: 4604
+
+Analysis results written to: 
+  MPBoot report:                 FINAL/mpboot_files/Filter_PD41276_v2_FINAL_rho05_noMixed.fa.mpboot
+  Maximum-parsimony  tree:       FINAL/mpboot_files/Filter_PD41276_v2_FINAL_rho05_noMixed.fa.treefile
+
+Maximum parsimony bootstrap approximation results written to:
+  Split support values:          FINAL/mpboot_files/Filter_PD41276_v2_FINAL_rho05_noMixed.fa.splits.nex
+  Consensus tree:                FINAL/mpboot_files/Filter_PD41276_v2_FINAL_rho05_noMixed.fa.contree
+  Screen log file:               FINAL/mpboot_files/Filter_PD41276_v2_FINAL_rho05_noMixed.fa.log
+
+Date and Time: Wed Dec  2 17:15:56 2020

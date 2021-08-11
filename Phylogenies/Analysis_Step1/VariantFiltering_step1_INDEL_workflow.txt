@@ -1,0 +1,513 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# "Filtering step 1: Indel filters for PD34493, PD41276, PD41305"
+# Author: Margarete Fabre
+
+# run separately for each of the 3 individuals (PD34493, PD41276, PD41305)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD34493/PD34493_1/indels
+/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD41276/PD41276_1/indels
+/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD41305/PD41305_1/indels
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#1.  Copy in indels files 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+nohup cp /nfs/cancer_ref01/nst_links/live/2305/PD34493k*/*pindel.annot.vcf.gz . &
+nohup cp /nfs/cancer_ref01/nst_links/live/2305/PD41276k*/*pindel.annot.vcf.gz . &
+nohup cp /nfs/cancer_ref01/nst_links/live/2305/PD41305k*/*pindel.annot.vcf.gz . &
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#2. Unzip the indels files.  
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+	
+nohup gunzip *gz &
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#3. Run perl script to select PASS flag variants from pindel file 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+nohup perl /lustre/scratch119/casm/team163gv/mf13/COLONIES/PD34493/PD34493_1/indels/2016.05.20_filter_pass_pindel.pl &
+nohup perl /lustre/scratch119/casm/team163gv/mf13/COLONIES/PD41276/PD41276_1/indels/2016.05.20_filter_pass_pindel.pl &
+nohup perl /lustre/scratch119/casm/team163gv/mf13/COLONIES/PD41305/PD41305_1/indels/2016.05.20_filter_pass_pindel.pl &
+ 
+# Use nano to create new file in working directory
+
+use strict;
+use warnings;
+
+
+my @file_list = `ls *pindel.annot.vcf`; # choose the files with "pindel.annot.vcf" in the title
+
+print "@file_list \n";
+
+foreach my $file (@file_list) {
+		
+	# open file
+	print "$file";
+	chomp $file;
+	open (my $fh, '<', $file) or die "Can't open $file, $! \n";
+	print "opened file: $file \n";
+  
+    # make an array with all the pass hits in exons/splice sites
+    my @filtered = ();
+    while (my $line = <$fh>) {
+        if ($line =~ (/PASS/)) {
+            #if ($line =~ (/CLPM=0.00/)) {
+                #if ($line =~ (/ASMD=14|ASMD=15/)) {
+                            push @filtered, $line;
+                        
+     #           }
+    #        }
+        }
+    }
+
+	# put all these hits in an output file
+	my $file_out = "$file"."_pass_flags"; # make output file with a name that links it to the input file
+	print "$file_out";
+	open (my $fh_out, '>', "$file_out") or die "Can't open $file_out\n";
+	print $fh_out "$_" for @filtered;
+	close $fh_out;
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## wc -l *pass_flags
+
+    1625 PD34493k_01.pindel.annot.vcf_pass_flags
+     874 PD34493k_02.pindel.annot.vcf_pass_flags
+    2177 PD34493k_03.pindel.annot.vcf_pass_flags
+    1174 PD34493k_04.pindel.annot.vcf_pass_flags
+    1563 PD34493k_05.pindel.annot.vcf_pass_flags
+    2453 PD34493k_06.pindel.annot.vcf_pass_flags
+    2744 PD34493k_07.pindel.annot.vcf_pass_flags
+    1346 PD34493k_08.pindel.annot.vcf_pass_flags
+    1586 PD34493k_09.pindel.annot.vcf_pass_flags
+    1788 PD34493k_10.pindel.annot.vcf_pass_flags
+    1783 PD34493k_11.pindel.annot.vcf_pass_flags
+    2551 PD34493k_12.pindel.annot.vcf_pass_flags
+    1120 PD34493k_13.pindel.annot.vcf_pass_flags
+    2445 PD34493k_14.pindel.annot.vcf_pass_flags
+    3062 PD34493k_15.pindel.annot.vcf_pass_flags
+    1540 PD34493k_16.pindel.annot.vcf_pass_flags
+    2394 PD34493k_17.pindel.annot.vcf_pass_flags
+    1793 PD34493k_18.pindel.annot.vcf_pass_flags
+    2874 PD34493k_19.pindel.annot.vcf_pass_flags
+    1901 PD34493k_20.pindel.annot.vcf_pass_flags
+    2145 PD34493k_21.pindel.annot.vcf_pass_flags
+    2459 PD34493k_22.pindel.annot.vcf_pass_flags
+    2638 PD34493k_23.pindel.annot.vcf_pass_flags
+     970 PD34493k_24.pindel.annot.vcf_pass_flags
+    2440 PD34493k_25.pindel.annot.vcf_pass_flags
+    2508 PD34493k_26.pindel.annot.vcf_pass_flags
+    1572 PD34493k_27.pindel.annot.vcf_pass_flags
+    2954 PD34493k_28.pindel.annot.vcf_pass_flags
+    1566 PD34493k_29.pindel.annot.vcf_pass_flags
+    2873 PD34493k_30.pindel.annot.vcf_pass_flags
+    2026 PD34493k_31.pindel.annot.vcf_pass_flags
+     961 PD34493k_32.pindel.annot.vcf_pass_flags
+    1841 PD34493k_33.pindel.annot.vcf_pass_flags
+    2213 PD34493k_34.pindel.annot.vcf_pass_flags
+    2948 PD34493k_35.pindel.annot.vcf_pass_flags
+    1775 PD34493k_36.pindel.annot.vcf_pass_flags
+    3016 PD34493k_37.pindel.annot.vcf_pass_flags
+    3448 PD34493k_38.pindel.annot.vcf_pass_flags
+    2502 PD34493k_39.pindel.annot.vcf_pass_flags
+    1356 PD34493k_40.pindel.annot.vcf_pass_flags
+    2552 PD34493k_41.pindel.annot.vcf_pass_flags
+    3505 PD34493k_42.pindel.annot.vcf_pass_flags
+    3185 PD34493k_43.pindel.annot.vcf_pass_flags
+    2505 PD34493k_44.pindel.annot.vcf_pass_flags
+    2721 PD34493k_45.pindel.annot.vcf_pass_flags
+    3357 PD34493k_46.pindel.annot.vcf_pass_flags
+    1484 PD34493k_47.pindel.annot.vcf_pass_flags
+    1585 PD34493k_48.pindel.annot.vcf_pass_flags
+    2979 PD34493k_49.pindel.annot.vcf_pass_flags
+    2389 PD34493k_50.pindel.annot.vcf_pass_flags
+    3445 PD34493k_51.pindel.annot.vcf_pass_flags
+    3539 PD34493k_52.pindel.annot.vcf_pass_flags
+    3490 PD34493k_53.pindel.annot.vcf_pass_flags
+    3560 PD34493k_54.pindel.annot.vcf_pass_flags
+    3089 PD34493k_55.pindel.annot.vcf_pass_flags
+    1991 PD34493k_56.pindel.annot.vcf_pass_flags
+    3052 PD34493k_57.pindel.annot.vcf_pass_flags
+    2265 PD34493k_58.pindel.annot.vcf_pass_flags
+    2294 PD34493k_59.pindel.annot.vcf_pass_flags
+    2234 PD34493k_60.pindel.annot.vcf_pass_flags
+    2417 PD34493k_61.pindel.annot.vcf_pass_flags
+    2111 PD34493k_62.pindel.annot.vcf_pass_flags
+    2373 PD34493k_63.pindel.annot.vcf_pass_flags
+     468 PD34493k_64.pindel.annot.vcf_pass_flags
+    3048 PD34493k_65.pindel.annot.vcf_pass_flags
+    2249 PD34493k_66.pindel.annot.vcf_pass_flags
+    1634 PD34493k_67.pindel.annot.vcf_pass_flags
+    2377 PD34493k_68.pindel.annot.vcf_pass_flags
+    1482 PD34493k_70.pindel.annot.vcf_pass_flags
+    2840 PD34493k_71.pindel.annot.vcf_pass_flags
+    1586 PD34493k_72.pindel.annot.vcf_pass_flags
+    2416 PD34493k_73.pindel.annot.vcf_pass_flags
+    3409 PD34493k_74.pindel.annot.vcf_pass_flags
+    2974 PD34493k_75.pindel.annot.vcf_pass_flags
+    2649 PD34493k_76.pindel.annot.vcf_pass_flags
+    1985 PD34493k_77.pindel.annot.vcf_pass_flags
+    1675 PD34493k_78.pindel.annot.vcf_pass_flags
+    2296 PD34493k_79.pindel.annot.vcf_pass_flags
+    2000 PD34493k_80.pindel.annot.vcf_pass_flags
+    1851 PD34493k_81.pindel.annot.vcf_pass_flags
+    1966 PD34493k_82.pindel.annot.vcf_pass_flags
+    2337 PD34493k_83.pindel.annot.vcf_pass_flags
+    1482 PD34493k_84.pindel.annot.vcf_pass_flags
+    2725 PD34493k_85.pindel.annot.vcf_pass_flags
+    2721 PD34493k_86.pindel.annot.vcf_pass_flags
+    2152 PD34493k_87.pindel.annot.vcf_pass_flags
+    3394 PD34493k_88.pindel.annot.vcf_pass_flags
+    2628 PD34493k_89.pindel.annot.vcf_pass_flags
+    1909 PD34493k_90.pindel.annot.vcf_pass_flags
+    2611 PD34493k_91.pindel.annot.vcf_pass_flags
+    2716 PD34493k_92.pindel.annot.vcf_pass_flags
+    3357 PD34493k_93.pindel.annot.vcf_pass_flags
+    2308 PD34493k_94.pindel.annot.vcf_pass_flags
+    2073 PD34493k_95.pindel.annot.vcf_pass_flags
+    2098 PD34493k_96.pindel.annot.vcf_pass_flags
+  218542 total
+
+
+     2768 PD41276k_01.pindel.annot.vcf_pass_flags
+     1693 PD41276k_02.pindel.annot.vcf_pass_flags
+     1888 PD41276k_03.pindel.annot.vcf_pass_flags
+     2027 PD41276k_04.pindel.annot.vcf_pass_flags
+     2953 PD41276k_05.pindel.annot.vcf_pass_flags
+     2450 PD41276k_06.pindel.annot.vcf_pass_flags
+     2627 PD41276k_07.pindel.annot.vcf_pass_flags
+     2925 PD41276k_08.pindel.annot.vcf_pass_flags
+     2766 PD41276k_09.pindel.annot.vcf_pass_flags
+     1828 PD41276k_10.pindel.annot.vcf_pass_flags
+     1869 PD41276k_11.pindel.annot.vcf_pass_flags
+     2885 PD41276k_12.pindel.annot.vcf_pass_flags
+     2431 PD41276k_13.pindel.annot.vcf_pass_flags
+     2955 PD41276k_14.pindel.annot.vcf_pass_flags
+     3281 PD41276k_15.pindel.annot.vcf_pass_flags
+     2940 PD41276k_16.pindel.annot.vcf_pass_flags
+     3604 PD41276k_17.pindel.annot.vcf_pass_flags
+     2766 PD41276k_18.pindel.annot.vcf_pass_flags
+     2167 PD41276k_19.pindel.annot.vcf_pass_flags
+     3036 PD41276k_20.pindel.annot.vcf_pass_flags
+     3262 PD41276k_21.pindel.annot.vcf_pass_flags
+     2921 PD41276k_22.pindel.annot.vcf_pass_flags
+     2673 PD41276k_23.pindel.annot.vcf_pass_flags
+     2524 PD41276k_24.pindel.annot.vcf_pass_flags
+     2326 PD41276k_25.pindel.annot.vcf_pass_flags
+     2808 PD41276k_26.pindel.annot.vcf_pass_flags
+     2491 PD41276k_27.pindel.annot.vcf_pass_flags
+     3161 PD41276k_28.pindel.annot.vcf_pass_flags
+     2451 PD41276k_29.pindel.annot.vcf_pass_flags
+     3073 PD41276k_30.pindel.annot.vcf_pass_flags
+     2802 PD41276k_31.pindel.annot.vcf_pass_flags
+     3223 PD41276k_32.pindel.annot.vcf_pass_flags
+     3472 PD41276k_33.pindel.annot.vcf_pass_flags
+     2120 PD41276k_34.pindel.annot.vcf_pass_flags
+     2313 PD41276k_35.pindel.annot.vcf_pass_flags
+     2808 PD41276k_36.pindel.annot.vcf_pass_flags
+     3015 PD41276k_37.pindel.annot.vcf_pass_flags
+     3453 PD41276k_38.pindel.annot.vcf_pass_flags
+     2284 PD41276k_39.pindel.annot.vcf_pass_flags
+     3039 PD41276k_40.pindel.annot.vcf_pass_flags
+     2750 PD41276k_41.pindel.annot.vcf_pass_flags
+     2990 PD41276k_42.pindel.annot.vcf_pass_flags
+     2379 PD41276k_43.pindel.annot.vcf_pass_flags
+     2607 PD41276k_44.pindel.annot.vcf_pass_flags
+     2428 PD41276k_45.pindel.annot.vcf_pass_flags
+     2703 PD41276k_46.pindel.annot.vcf_pass_flags
+     2366 PD41276k_47.pindel.annot.vcf_pass_flags
+     2658 PD41276k_48.pindel.annot.vcf_pass_flags
+     3274 PD41276k_49.pindel.annot.vcf_pass_flags
+     2226 PD41276k_50.pindel.annot.vcf_pass_flags
+     2705 PD41276k_51.pindel.annot.vcf_pass_flags
+     3147 PD41276k_52.pindel.annot.vcf_pass_flags
+     3069 PD41276k_53.pindel.annot.vcf_pass_flags
+     3167 PD41276k_54.pindel.annot.vcf_pass_flags
+     1875 PD41276k_55.pindel.annot.vcf_pass_flags
+     3604 PD41276k_56.pindel.annot.vcf_pass_flags
+     2759 PD41276k_57.pindel.annot.vcf_pass_flags
+     1744 PD41276k_58.pindel.annot.vcf_pass_flags
+     2287 PD41276k_59.pindel.annot.vcf_pass_flags
+     1934 PD41276k_60.pindel.annot.vcf_pass_flags
+     2528 PD41276k_61.pindel.annot.vcf_pass_flags
+     2064 PD41276k_62.pindel.annot.vcf_pass_flags
+     2400 PD41276k_63.pindel.annot.vcf_pass_flags
+     2446 PD41276k_64.pindel.annot.vcf_pass_flags
+     3059 PD41276k_65.pindel.annot.vcf_pass_flags
+     1752 PD41276k_66.pindel.annot.vcf_pass_flags
+     2044 PD41276k_67.pindel.annot.vcf_pass_flags
+     2494 PD41276k_68.pindel.annot.vcf_pass_flags
+     3186 PD41276k_69.pindel.annot.vcf_pass_flags
+     2371 PD41276k_70.pindel.annot.vcf_pass_flags
+     2736 PD41276k_71.pindel.annot.vcf_pass_flags
+     2664 PD41276k_72.pindel.annot.vcf_pass_flags
+     2381 PD41276k_73.pindel.annot.vcf_pass_flags
+     3233 PD41276k_74.pindel.annot.vcf_pass_flags
+     2929 PD41276k_75.pindel.annot.vcf_pass_flags
+     2738 PD41276k_76.pindel.annot.vcf_pass_flags
+     2772 PD41276k_77.pindel.annot.vcf_pass_flags
+     1906 PD41276k_78.pindel.annot.vcf_pass_flags
+     1780 PD41276k_79.pindel.annot.vcf_pass_flags
+     2395 PD41276k_80.pindel.annot.vcf_pass_flags
+     2991 PD41276k_81.pindel.annot.vcf_pass_flags
+     2819 PD41276k_82.pindel.annot.vcf_pass_flags
+     3267 PD41276k_83.pindel.annot.vcf_pass_flags
+     2582 PD41276k_84.pindel.annot.vcf_pass_flags
+     3245 PD41276k_85.pindel.annot.vcf_pass_flags
+     2835 PD41276k_86.pindel.annot.vcf_pass_flags
+     2411 PD41276k_87.pindel.annot.vcf_pass_flags
+     3649 PD41276k_88.pindel.annot.vcf_pass_flags
+     3334 PD41276k_89.pindel.annot.vcf_pass_flags
+     2256 PD41276k_90.pindel.annot.vcf_pass_flags
+     2513 PD41276k_91.pindel.annot.vcf_pass_flags
+     2674 PD41276k_92.pindel.annot.vcf_pass_flags
+     3081 PD41276k_93.pindel.annot.vcf_pass_flags
+     3055 PD41276k_94.pindel.annot.vcf_pass_flags
+     2477 PD41276k_95.pindel.annot.vcf_pass_flags
+     2489 PD41276k_96.pindel.annot.vcf_pass_flags
+   256306 total
+   
+   
+     2435 PD41305k_100.pindel.annot.vcf_pass_flags
+     2730 PD41305k_101.pindel.annot.vcf_pass_flags
+     2414 PD41305k_102.pindel.annot.vcf_pass_flags
+     2629 PD41305k_103.pindel.annot.vcf_pass_flags
+     2435 PD41305k_104.pindel.annot.vcf_pass_flags
+     1205 PD41305k_105.pindel.annot.vcf_pass_flags
+     1961 PD41305k_106.pindel.annot.vcf_pass_flags
+     2807 PD41305k_107.pindel.annot.vcf_pass_flags
+     2692 PD41305k_108.pindel.annot.vcf_pass_flags
+     2326 PD41305k_109.pindel.annot.vcf_pass_flags
+     2683 PD41305k_110.pindel.annot.vcf_pass_flags
+     2981 PD41305k_111.pindel.annot.vcf_pass_flags
+     1936 PD41305k_112.pindel.annot.vcf_pass_flags
+     1848 PD41305k_113.pindel.annot.vcf_pass_flags
+      194 PD41305k_114.pindel.annot.vcf_pass_flags
+     2719 PD41305k_115.pindel.annot.vcf_pass_flags
+     3159 PD41305k_116.pindel.annot.vcf_pass_flags
+     3354 PD41305k_117.pindel.annot.vcf_pass_flags
+     3431 PD41305k_118.pindel.annot.vcf_pass_flags
+     2534 PD41305k_119.pindel.annot.vcf_pass_flags
+     3147 PD41305k_120.pindel.annot.vcf_pass_flags
+     1893 PD41305k_121.pindel.annot.vcf_pass_flags
+     2390 PD41305k_122.pindel.annot.vcf_pass_flags
+     2834 PD41305k_123.pindel.annot.vcf_pass_flags
+     3353 PD41305k_124.pindel.annot.vcf_pass_flags
+     1804 PD41305k_125.pindel.annot.vcf_pass_flags
+     3425 PD41305k_126.pindel.annot.vcf_pass_flags
+     2239 PD41305k_127.pindel.annot.vcf_pass_flags
+     4087 PD41305k_128.pindel.annot.vcf_pass_flags
+     2563 PD41305k_129.pindel.annot.vcf_pass_flags
+     1555 PD41305k_130.pindel.annot.vcf_pass_flags
+     2777 PD41305k_131.pindel.annot.vcf_pass_flags
+     2223 PD41305k_132.pindel.annot.vcf_pass_flags
+     3114 PD41305k_133.pindel.annot.vcf_pass_flags
+     3465 PD41305k_134.pindel.annot.vcf_pass_flags
+     2756 PD41305k_135.pindel.annot.vcf_pass_flags
+     2248 PD41305k_136.pindel.annot.vcf_pass_flags
+        5 PD41305k_137.pindel.annot.vcf_pass_flags
+     3052 PD41305k_138.pindel.annot.vcf_pass_flags
+     3043 PD41305k_139.pindel.annot.vcf_pass_flags
+     1453 PD41305k_140.pindel.annot.vcf_pass_flags
+     1726 PD41305k_141.pindel.annot.vcf_pass_flags
+     2664 PD41305k_142.pindel.annot.vcf_pass_flags
+     2638 PD41305k_143.pindel.annot.vcf_pass_flags
+     2090 PD41305k_144.pindel.annot.vcf_pass_flags
+     2391 PD41305k_145.pindel.annot.vcf_pass_flags
+     1471 PD41305k_146.pindel.annot.vcf_pass_flags
+     1952 PD41305k_147.pindel.annot.vcf_pass_flags
+     3013 PD41305k_148.pindel.annot.vcf_pass_flags
+     2436 PD41305k_149.pindel.annot.vcf_pass_flags
+     2527 PD41305k_150.pindel.annot.vcf_pass_flags
+     1301 PD41305k_151.pindel.annot.vcf_pass_flags
+     3001 PD41305k_152.pindel.annot.vcf_pass_flags
+     2175 PD41305k_153.pindel.annot.vcf_pass_flags
+     2836 PD41305k_154.pindel.annot.vcf_pass_flags
+     1898 PD41305k_155.pindel.annot.vcf_pass_flags
+     2072 PD41305k_156.pindel.annot.vcf_pass_flags
+     2532 PD41305k_157.pindel.annot.vcf_pass_flags
+     2957 PD41305k_158.pindel.annot.vcf_pass_flags
+     2032 PD41305k_159.pindel.annot.vcf_pass_flags
+     1364 PD41305k_160.pindel.annot.vcf_pass_flags
+     2464 PD41305k_161.pindel.annot.vcf_pass_flags
+     2235 PD41305k_162.pindel.annot.vcf_pass_flags
+     1770 PD41305k_163.pindel.annot.vcf_pass_flags
+     2122 PD41305k_164.pindel.annot.vcf_pass_flags
+     3550 PD41305k_165.pindel.annot.vcf_pass_flags
+     3468 PD41305k_166.pindel.annot.vcf_pass_flags
+     2090 PD41305k_167.pindel.annot.vcf_pass_flags
+     2744 PD41305k_168.pindel.annot.vcf_pass_flags
+     1595 PD41305k_169.pindel.annot.vcf_pass_flags
+     2300 PD41305k_170.pindel.annot.vcf_pass_flags
+     2238 PD41305k_171.pindel.annot.vcf_pass_flags
+     2025 PD41305k_172.pindel.annot.vcf_pass_flags
+     2845 PD41305k_173.pindel.annot.vcf_pass_flags
+     1195 PD41305k_174.pindel.annot.vcf_pass_flags
+     1925 PD41305k_175.pindel.annot.vcf_pass_flags
+     1568 PD41305k_176.pindel.annot.vcf_pass_flags
+     2636 PD41305k_177.pindel.annot.vcf_pass_flags
+     2672 PD41305k_178.pindel.annot.vcf_pass_flags
+     3266 PD41305k_179.pindel.annot.vcf_pass_flags
+     2016 PD41305k_180.pindel.annot.vcf_pass_flags
+     3021 PD41305k_181.pindel.annot.vcf_pass_flags
+     2727 PD41305k_182.pindel.annot.vcf_pass_flags
+     3268 PD41305k_183.pindel.annot.vcf_pass_flags
+     1598 PD41305k_184.pindel.annot.vcf_pass_flags
+     2293 PD41305k_185.pindel.annot.vcf_pass_flags
+     2761 PD41305k_186.pindel.annot.vcf_pass_flags
+     2584 PD41305k_187.pindel.annot.vcf_pass_flags
+     2775 PD41305k_188.pindel.annot.vcf_pass_flags
+     4143 PD41305k_189.pindel.annot.vcf_pass_flags
+     1764 PD41305k_190.pindel.annot.vcf_pass_flags
+     1776 PD41305k_191.pindel.annot.vcf_pass_flags
+     2167 PD41305k_192.pindel.annot.vcf_pass_flags
+     2731 PD41305k_97.pindel.annot.vcf_pass_flags
+      829 PD41305k_98.pindel.annot.vcf_pass_flags
+     1727 PD41305k_99.pindel.annot.vcf_pass_flags
+   229863 total
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# 3. Get one long bed file of all the indels per individual, copy to new directory, create output file 
+farm3
+/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD34493/PD34493_1/indels
+/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD41276/PD41276_1/indels
+/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD41305/PD41305_1/indels
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+cut -f 1,2,4,5 *pindel.annot.vcf_pass_flags | sort | uniq > PD34493k_1_filtered_indels.bed
+grep -v "#" PD34493k_1_filtered_indels.bed > PD34493k_1_filtered_indels_no#.bed # remove lines starting with "#"
+mv PD34493k_1_filtered_indels_no#.bed PD34493k_1_filtered_indels.bed
+mkdir output3
+
+cut -f 1,2,4,5 *pindel.annot.vcf_pass_flags | sort | uniq > PD41276k_1_filtered_indels.bed
+grep -v "#" PD41276k_1_filtered_indels.bed > PD41276k_1_filtered_indels_no#.bed # remove lines starting with "#"
+mv PD41276k_1_filtered_indels_no#.bed PD41276k_1_filtered_indels.bed
+mkdir output3
+
+cut -f 1,2,4,5 *pindel.annot.vcf_pass_flags | sort | uniq > PD41305k_1_filtered_indels.bed
+grep -v "#" PD41305k_1_filtered_indels.bed > PD41305k_1_filtered_indels_no#.bed # remove lines starting with "#"
+mv PD41305k_1_filtered_indels_no#.bed PD41305k_1_filtered_indels.bed
+mkdir output3
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# 4. Run cgpVAF script to create cgpVAF commands that are split per chromosome  
+        
+        Creates: cgpVafChr.cmd (commands split per chr) cgpVafConcat.cmd (commands to concatenate split output) run_bsub.sh (script to set off commands in first two files)
+#farm5
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+module load cgpVAFcommand
+
+createVafCmd.pl -pid 2305 -u PD34493k_01 PD34493k_02 PD34493k_03 PD34493k_04 PD34493k_05 PD34493k_06 PD34493k_07 PD34493k_08 PD34493k_09 PD34493k_10 PD34493k_11 PD34493k_12 PD34493k_13 PD34493k_14 PD34493k_15 PD34493k_16 PD34493k_17 PD34493k_18 PD34493k_19 PD34493k_20 PD34493k_21 PD34493k_22 PD34493k_23 PD34493k_24 PD34493k_25 PD34493k_26 PD34493k_27 PD34493k_28 PD34493k_29 PD34493k_30 PD34493k_31 PD34493k_32 PD34493k_33 PD34493k_34 PD34493k_35 PD34493k_36 PD34493k_37 PD34493k_38 PD34493k_39 PD34493k_40 PD34493k_41 PD34493k_42 PD34493k_43 PD34493k_44 PD34493k_45 PD34493k_46 PD34493k_47 PD34493k_48 PD34493k_49 PD34493k_50 PD34493k_51 PD34493k_52 PD34493k_53 PD34493k_54 PD34493k_55 PD34493k_56 PD34493k_57 PD34493k_58 PD34493k_59 PD34493k_60 PD34493k_61 PD34493k_62 PD34493k_63 PD34493k_64 PD34493k_65 PD34493k_66 PD34493k_67 PD34493k_68 PD34493k_70 PD34493k_71 PD34493k_72 PD34493k_73 PD34493k_74 PD34493k_75 PD34493k_76 PD34493k_77 PD34493k_78 PD34493k_79 PD34493k_80 PD34493k_81 PD34493k_82 PD34493k_83 PD34493k_84 PD34493k_85 PD34493k_86 PD34493k_87 PD34493k_88 PD34493k_89 PD34493k_90 PD34493k_91 PD34493k_92 PD34493k_93 PD34493k_94 PD34493k_95 PD34493k_96 -o output3 -g /lustre/scratch119/casm/team78pipelines/reference/human/GRCh37d5/genome.fa -hdr /lustre/scratch119/casm/team78pipelines/reference/human/GRCh37d5/shared/ucscHiDepth_0.01_mrg1000_no_exon_coreChrs.bed.gz -mq 30  -bo 1  -b PD34493k_1_filtered_indels.bed
+createVafCmd.pl -pid 2305 -u PD41276k_01 PD41276k_02 PD41276k_03 PD41276k_04 PD41276k_05 PD41276k_06 PD41276k_07 PD41276k_08 PD41276k_09 PD41276k_10 PD41276k_11 PD41276k_12 PD41276k_13 PD41276k_14 PD41276k_15 PD41276k_16 PD41276k_17 PD41276k_18 PD41276k_19 PD41276k_20 PD41276k_21 PD41276k_22 PD41276k_23 PD41276k_24 PD41276k_25 PD41276k_26 PD41276k_27 PD41276k_28 PD41276k_29 PD41276k_30 PD41276k_31 PD41276k_32 PD41276k_33 PD41276k_34 PD41276k_35 PD41276k_36 PD41276k_37 PD41276k_38 PD41276k_39 PD41276k_40 PD41276k_41 PD41276k_42 PD41276k_43 PD41276k_44 PD41276k_45 PD41276k_46 PD41276k_47 PD41276k_48 PD41276k_49 PD41276k_50 PD41276k_51 PD41276k_52 PD41276k_53 PD41276k_54 PD41276k_55 PD41276k_56 PD41276k_57 PD41276k_58 PD41276k_59 PD41276k_60 PD41276k_61 PD41276k_62 PD41276k_63 PD41276k_64 PD41276k_65 PD41276k_66 PD41276k_67 PD41276k_68 PD41276k_69 PD41276k_70 PD41276k_71 PD41276k_72 PD41276k_73 PD41276k_74 PD41276k_75 PD41276k_76 PD41276k_77 PD41276k_78 PD41276k_79 PD41276k_80 PD41276k_81 PD41276k_82 PD41276k_83 PD41276k_84 PD41276k_85 PD41276k_86 PD41276k_87 PD41276k_88 PD41276k_89 PD41276k_90 PD41276k_91 PD41276k_92 PD41276k_93 PD41276k_94 PD41276k_95 PD41276k_96 -o output3 -g /lustre/scratch119/casm/team78pipelines/reference/human/GRCh37d5/genome.fa -hdr /lustre/scratch119/casm/team78pipelines/reference/human/GRCh37d5/shared/ucscHiDepth_0.01_mrg1000_no_exon_coreChrs.bed.gz -mq 30  -bo 1  -b PD41276k_1_filtered_indels.bed
+createVafCmd.pl -pid 2305 -u PD41305k_100 PD41305k_101 PD41305k_102 PD41305k_103 PD41305k_104 PD41305k_105 PD41305k_106 PD41305k_107 PD41305k_108 PD41305k_109 PD41305k_110 PD41305k_111 PD41305k_112 PD41305k_113 PD41305k_114 PD41305k_115 PD41305k_116 PD41305k_117 PD41305k_118 PD41305k_119 PD41305k_120 PD41305k_121 PD41305k_122 PD41305k_123 PD41305k_124 PD41305k_125 PD41305k_126 PD41305k_127 PD41305k_128 PD41305k_129 PD41305k_130 PD41305k_131 PD41305k_132 PD41305k_133 PD41305k_134 PD41305k_135 PD41305k_136 PD41305k_137 PD41305k_138 PD41305k_139 PD41305k_140 PD41305k_141 PD41305k_142 PD41305k_143 PD41305k_144 PD41305k_145 PD41305k_146 PD41305k_147 PD41305k_148 PD41305k_149 PD41305k_150 PD41305k_151 PD41305k_152 PD41305k_153 PD41305k_154 PD41305k_155 PD41305k_156 PD41305k_157 PD41305k_158 PD41305k_159 PD41305k_160 PD41305k_161 PD41305k_162 PD41305k_163 PD41305k_164 PD41305k_165 PD41305k_166 PD41305k_167 PD41305k_168 PD41305k_169 PD41305k_170 PD41305k_171 PD41305k_172 PD41305k_173 PD41305k_174 PD41305k_175 PD41305k_176 PD41305k_177 PD41305k_178 PD41305k_179 PD41305k_180 PD41305k_181 PD41305k_182 PD41305k_183 PD41305k_184 PD41305k_185 PD41305k_186 PD41305k_187 PD41305k_188 PD41305k_189 PD41305k_190 PD41305k_191 PD41305k_192 PD41305k_97 PD41305k_98 PD41305k_99 -o output3 -g /lustre/scratch119/casm/team78pipelines/reference/human/GRCh37d5/genome.fa -hdr /lustre/scratch119/casm/team78pipelines/reference/human/GRCh37d5/shared/ucscHiDepth_0.01_mrg1000_no_exon_coreChrs.bed.gz -mq 30  -bo 1  -b PD41305k_1_filtered_indels.bed
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# 5. Modify config.ini file (in output directory) to have approx 10 bams per job (splits by bams as well as by chr)  
+	/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD34493/PD34493_1/indels/output3
+	/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD41276/PD41276_1/indels/output3
+	/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD41305/PD41305_1/indels/output3
+	
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# 6. Save .ini file as 
+
+PD34493k_cgpVafConfig.ini
+PD41276k_cgpVafConfig.ini
+PD41305k_cgpVafConfig.ini 
+
+and run following command to create amended split commands  
+#farm5
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+createVafCmd.pl -pid 2305 -o output3 -i output3/PD34493k_cgpVafConfig.ini -g /lustre/scratch119/casm/team78pipelines/reference/human/GRCh37d5/genome.fa -hdr /lustre/scratch119/casm/team78pipelines/reference/human/GRCh37d5/shared/ucscHiDepth_0.01_mrg1000_no_exon_coreChrs.bed.gz -mq 30  -bo 1  -b PD34493k_1_filtered_indels.bed
+createVafCmd.pl -pid 2305 -o output3 -i output3/PD41276k_cgpVafConfig.ini -g /lustre/scratch119/casm/team78pipelines/reference/human/GRCh37d5/genome.fa -hdr /lustre/scratch119/casm/team78pipelines/reference/human/GRCh37d5/shared/ucscHiDepth_0.01_mrg1000_no_exon_coreChrs.bed.gz -mq 30  -bo 1  -b PD41276k_1_filtered_indels.bed
+createVafCmd.pl -pid 2305 -o output3 -i output3/PD41305k_cgpVafConfig.ini -g /lustre/scratch119/casm/team78pipelines/reference/human/GRCh37d5/genome.fa -hdr /lustre/scratch119/casm/team78pipelines/reference/human/GRCh37d5/shared/ucscHiDepth_0.01_mrg1000_no_exon_coreChrs.bed.gz -mq 30  -bo 1  -b PD41305k_1_filtered_indels.bed
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# 7. Edit run_bsub.sh command to increase memory and use long queue   
+            run_bsub.sh command sets off jobs in cgpVafChr.cmd file that has been created
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+set -e;
+set -o pipefail;
+
+JID=`uuidgen`
+bsub -oo cgpvaf%I.log -q long -J "$JID[1-240]%25" -n 1 -R 'select[mem>=8000] span[hosts=1] rusage[mem=8000]' -M8000 '/software/CASM/modules/installs/cgpVAFcommand/cgpVAFcommand-2.4.0/perl/bin/farm_idx_exec.pl cgpVafChr.cmd $LSB_JOBINDEX'
+
+bsub -w "done($JID)||exit($JID)" -oo concat%I.log -q normal -J 'batchjobs[1-10]%10' -n 1 -R 'select[mem>=2000] span[hosts=1] rusage[mem=2000]' -M2000 '/software/CASM/modules/installs/cgpVAFcommand/cgpVAFcommand-2.4.0/perl/bin/farm_idx_exec.pl cgpVafConcat.cmd $LSB_JOBINDEX'
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# 8. Run run_bsub.sh command   
+	
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+bash run_bsub.sh
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# 9. Check output 
+		/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD34493/PD34493_1/indels/output3/output/PDv37is/indel
+		/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD41276/PD41276_1/indels/output3/output/PDv37is/indel
+		/lustre/scratch119/casm/team163gv/mf13/COLONIES/PD41305/PD41305_1/indels/output3/output/PDv37is/indel
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# 10.  Remove extra lines in headers of vaf.tsv files with more than 10 bam files
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Check file lengths
+wc -l *_vaf.tsv
+
+# Remove header
+
+ls *_vaf.tsv > files
+
+for i in {1..10}
+do grep -v "##" $(sed -n $i'p' files) > tsv$i
+done
+
+
+#check the files are now all the same length:
+wc -l tsv*
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# 11. Cut columns of interest to new files: Chrom Pos Ref Alt then MTR DEP for all samplesq 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Create list of files of interest in list saved as 'files'
+ls tsv* > tsv_files
+
+#for first file
+cut -f 3,4,5,6,25,27,34,36,43,45,52,54,61,63,70,72,79,81,88,90,97,99,106,108,115,117 $(sed -n '1p' tsv_files) > output1   #Chr, Pos, Ref, Alt, + MTR, DEP for all samples (max 11 samples in one file)
+
+#for subsequent files (exclude Chr, Pos, Ref, Alt and PDv37is)
+for i in {2..10}
+do
+cut -f 25,27,34,36,43,45,52,54,61,63,70,72,79,81,88,90,97,99,106,108,115,117,124,126 $(sed -n $i'p' tsv_files) >  output$i
+done
+
+
+#Concatenate output files to one merged file
+
+paste output* > PD34493_1_indel_filtered_merged_cut.tsv
+paste output* > PD41276_1_indel_filtered_merged_cut.tsv
+paste output* > PD41305_1_indel_filtered_merged_cut.tsv
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Next steps are in Analysis_Step2 
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
